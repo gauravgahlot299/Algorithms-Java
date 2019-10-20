@@ -19,6 +19,8 @@ public class BSTConstruction {
         System.out.println("DFS:");
         DFS(root);
         System.out.println("minValue:"+minValue(root).data);
+        System.out.println("Is 5 in BST? "+searchBST(5,root));
+        System.out.println("Is 7 in BST? "+searchBST(7,root));
     }
 
     static void DFS(Node root) {
@@ -32,6 +34,24 @@ public class BSTConstruction {
             return minValue(root.left);
         }
         return root;
+    }
+
+    static boolean searchBST(int val, Node root){
+        if(root!=null){
+            if(root.data==val)
+                return true;
+            else{
+                if(val<root.data){
+                    return searchBST(val,root.left);
+                }
+                else{
+                    return searchBST(val,root.right);
+                }
+            }
+        }
+        else{
+            return false;
+        }
     }
 
     static Node constructBST(int a, Node root) {
